@@ -1,18 +1,18 @@
 import React from "react";
 
-import Toast from "../Toast";
+import Toast from "../Toast/Toast";
 import styles from "./ToastShelf.module.css";
 
-function ToastShelf({ notifications, closeNotification }) {
+function ToastShelf({ toasts, removeToast }) {
   return (
     <ol className={styles.wrapper}>
-      {notifications.map((notification, idx) => (
-        <li key={notification.id} className={styles.toastWrapper}>
+      {toasts.map((toast) => (
+        <li key={toast.id} className={styles.toastWrapper}>
           <Toast
-            variant={notification.variant}
-            closeToast={() => closeNotification(notification)}
+            variant={toast.variant}
+            closeToast={() => removeToast(toast.id)}
           >
-            {notification.message}
+            {toast.message}
           </Toast>
         </li>
       ))}
